@@ -7,6 +7,15 @@ AJAX Jabber client built in Rails.
 
 It uses Juggernaut for messaging back to the browser.
 
+== To install it
+
+1) cp config/jabber_client_test_login.rb.template config/jabber_client_test_login.rb
+2) modify it so it has the client info that will be used to receive messages and presence updates.
+3) signup for a user.
+4) fill out your jabber login/password (this will be used to send messages).
+
+I'm aware that the above is quirky and unsuitable for any real usage, but it's a nice start.
+
 == To test it
 
 1) Launch the juggernaut server with:
