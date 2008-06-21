@@ -6,3 +6,4 @@
 /log/**/*
 /config/initializers/site_keys.rb
 /config/jabber_client_test_login.rb
+/db/development.sqlite3

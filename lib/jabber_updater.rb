@@ -34,7 +34,7 @@ class JabberUpdater
     if @client.received_messages?
       # TODO: This needs to restrict to the particular user it's supposed to be updating.
       the_messages = @client.received_messages.map do |message|
-        { :from => message.from.to_s, :body => message.body }
+        { :from => message.from.to_s.gsub(/'/, ''), :body => message.body.gsub(/'/, '') } # FIXME: Need to keep tickmarks at some point.
       end
       puts the_messages.inspect
       Juggernaut.send_to_all("new MessagesUpdate('#{the_messages.to_json}');")

@@ -3,6 +3,6 @@
   - form_tag messages_path do
     = submit_tag('Send', :class => 'fright', :tabindex => 3)
     .form_field
-      = text_field_tag(:to, nil, :tabindex => 1)
+      = text_field_tag(:to, params[:to], :tabindex => 1)
       %label{ :for => 'to' } To
-    = text_area_tag(:message, nil, :size => '40x4', :tabindex => 2)
+    = text_area_tag(:message, params[:body], :size => '40x4', :tabindex => 2)
