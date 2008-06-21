@@ -28,6 +28,9 @@ Rails::Initializer.run do |config|
   config.gem "xmpp4r"
   config.gem "xmpp4r-simple"
   config.gem "rubyist-aasm", :lib => "aasm", :source => "http://gems.github.com"
+  config.gem "json"
+  config.gem "eventmachine"
+  config.gem "juggernaut"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
