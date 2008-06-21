@@ -1,0 +1,26 @@
+!font_base   = 12px
+!light_grey  = #aaa
+!medium_grey = #777
+
+body
+  :font-family "Bitstream Vera Sans",arial,sans-serif
+  :font-size= !font_base
+  #buddy_list
+    li
+      h3
+        :font-weight normal
+        :font-size= !font_base
+      &.online
+        :color black
+      &.away 
+        :color= !light_grey
+
+.fright
+  :float right
+
+.new_message
+  textarea
+    :width 100%
+
+label
+  :color= !medium_grey

@@ -12,7 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :remember_token_expires_at, :datetime
       t.column :activation_code,           :string, :limit => 40
       t.column :activated_at,              :datetime
-      t.column :state,                     :string, :null => :no, :default => 'passive'
+      t.column :state,                :string, :null => :no, :default => 'passive'
       t.column :deleted_at,                :datetime
     end
     add_index :users, :login, :unique => true

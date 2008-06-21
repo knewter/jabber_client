@@ -1,0 +1,2 @@
+module JabberUsersHelper
+end

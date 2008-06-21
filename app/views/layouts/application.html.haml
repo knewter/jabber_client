@@ -1,0 +1,11 @@
+%html
+  %head
+    %title Jabber Client test
+    = javascript_include_tag :defaults, 'builder', :juggernaut
+    = stylesheet_link_tag 'base'
+  %body
+    %ul
+      %li= link_to "New Message", new_message_path
+      %li= link_to "Messages",    messages_path
+      %li= link_to "Buddy List",  '/buddy_list'
+    = yield

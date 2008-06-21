@@ -1,10 +1,16 @@
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
+  include AASM
+  aasm_column :aasm_state
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   include Authorization::AasmRoles
+
+  has_one :jabber_user
+
+  before_save :ensure_jabber_user
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -35,16 +41,20 @@ class User < ActiveRecord::Base
   # This will also let us return a human error message.
   #
   def self.authenticate(login, password)
-    u = find_in_state :first, :active, :conditions => {:login => login} # need to get the salt
+    u = find_by_state :active, :conditions => { :login => login } # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 
-  protected
-    
-    def make_activation_code
-        self.deleted_at = nil
-        self.activation_code = self.class.make_token
+protected
+  
+  def make_activation_code
+      self.deleted_at = nil
+      self.activation_code = self.class.make_token
+  end
+
+  def ensure_jabber_user
+    if !self.jabber_user
+      self.jabber_user = JabberUser.new
     end
-
-
+  end
 end

@@ -2,4 +2,7 @@
 /tmp/
 /config/database.yml
 /log/
+/log/*
+/log/**/*
 /config/initializers/site_keys.rb
+/config/jabber_client_test_login.rb

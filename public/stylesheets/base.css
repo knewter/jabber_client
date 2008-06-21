@@ -1,0 +1,19 @@
+body {
+  font-family: "Bitstream Vera Sans",arial,sans-serif;
+  font-size: 12px; }
+  body #buddy_list li h3 {
+    font-weight: normal;
+    font-size: 12px; }
+  body #buddy_list li.online {
+    color: black; }
+  body #buddy_list li.away {
+    color: #aaaaaa; }
+
+.fright {
+  float: right; }
+
+.new_message textarea {
+  width: 100%; }
+
+label {
+  color: #777777; }

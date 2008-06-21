@@ -1,0 +1,9 @@
+%h2 Jabber User Configuration
+- form_for :jabber_user, :url => jabber_users_path do |f|
+  .form_field
+    = f.text_field :login
+    %label{ :for => 'jabber_user_login' } Login
+  .form_field
+    = f.password_field :password
+    %label{ :for => 'jabber_user_password' } Password
+  = submit_tag
