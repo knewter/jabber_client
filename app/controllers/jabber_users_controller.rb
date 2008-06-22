@@ -5,7 +5,8 @@ class JabberUsersController < ApplicationController
 protected
   def load_jabber_user
     @jabber_user   = current_user.jabber_user
-    @jabber_user ||= JabberUser.new(params[:jabber_user].merge( { :user_id => current_user.id } ))
+    @jabber_user ||= JabberUser.new(params[:jabber_user])
+    @jabber_user.user ||= current_user # some stupid issues with .build that I don't have time to figure out.
   end
 
 public
