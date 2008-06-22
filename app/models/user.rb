@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   # This will also let us return a human error message.
   #
   def self.authenticate(login, password)
-    u = find_by_state :active, :conditions => { :login => login } # need to get the salt
+    u = find_by_state "active", :conditions => { :login => login } # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
 

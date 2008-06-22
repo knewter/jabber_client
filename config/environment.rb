@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "xmpp4r"
   config.gem "xmpp4r-simple"
-  config.gem "rubyist-aasm", :lib => "aasm", :source => "http://gems.github.com"
+  config.gem "rubyist-aasm", :lib => 'aasm'
   config.gem "json"
   config.gem "eventmachine"
   config.gem "juggernaut"

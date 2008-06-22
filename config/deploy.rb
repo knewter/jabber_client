@@ -54,15 +54,19 @@ task :update_submodules do
   run "cd #{latest_release}; git submodule init; git submodule update;"
 end
 
-desc "Symlink jabber login info"
-task :symlink_jabber_login_info do
-  the_file = "jabber_client_test_login.rb"
-  run "ln -s #{latest_release}/shared/#{the_file} #{latest_release}/current/config/#{the_file}"
+desc "Symlink secret files"
+task :symlink_secret_files do
+  %w(
+    jabber_client_test_login.rb
+    initializers/site_keys.rb
+  ).each do |the_file|
+    run "ln -s #{deploy_to}/shared/#{the_file} #{latest_release}/config/#{the_file}"
+  end
 end
 
 after "deploy:finalize_update" do
   update_submodules
   symlink_database_yml
-  symlink_jabber_login_info
+  symlink_secret_files
 end
 
