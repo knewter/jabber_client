@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(:version => 20080621175157) do
   create_table "jabber_users", :force => true do |t|
     t.string   "login"
     t.string   "password"
-    t.integer  "user_id"
+    t.integer  "user_id",    :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",     :default => false
+    t.boolean  "active",                   :default => false
   end
 
   create_table "users", :force => true do |t|
