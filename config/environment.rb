@@ -75,7 +75,6 @@ Rails::Initializer.run do |config|
 #  config.active_record.observers = :users_observer, :user_observer
 end
 # You should have a config/jabber_client_test_login.rb that stores your testing jabber account info.
-require 'jabber_client_test_login'
 require 'drb'
 DRb.start_service
 JABBER_CONNECTIONS = DRbObject.new(nil, 'druby://localhost:7777') # We have to proxy all our jabber connections via a drb service

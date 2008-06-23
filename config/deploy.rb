@@ -70,9 +70,26 @@ task :symlink_secret_files do
   end
 end
 
+desc "Start up drb server to host jabber connections"
+task :start_jabber_drb do
+  run "cd #{latest_release}/lib; ruby jabber_connection_server_daemon.rb"
+end
+
+desc "Start juggernaut"
+task :start_juggernaut do
+  run "cd #{latest_release}; juggernaut -c config/juggernaut.yml"
+end
+
+desc "Start backgroundrb"
+task :start_backgroundrb do
+  run "cd #{latest_release}; export RAILS_ENV=production; script/backgroundrb start"
+end
+
 after "deploy:finalize_update" do
   update_submodules
   symlink_database_yml
   symlink_secret_files
+  start_jabber_drb
+  start_juggernaut
+  start_backgroundrb
 end
-
