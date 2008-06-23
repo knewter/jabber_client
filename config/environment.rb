@@ -25,12 +25,15 @@ Rails::Initializer.run do |config|
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem "xmpp4r"
-  config.gem "xmpp4r-simple"
-  config.gem "rubyist-aasm", :lib => 'aasm'
+  #config.gem "packet"       # You need to build this from git HEAD
+  #config.gem "backgroundrb" # build this from git as well
   config.gem "json"
   config.gem "eventmachine"
   config.gem "juggernaut"
+  config.gem "xmpp4r"
+  config.gem "xmpp4r-simple"
+  config.gem "rubyist-aasm", :lib => 'aasm'
+  config.gem "chronic"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -73,3 +76,6 @@ Rails::Initializer.run do |config|
 end
 # You should have a config/jabber_client_test_login.rb that stores your testing jabber account info.
 require 'jabber_client_test_login'
+require 'drb'
+DRb.start_service
+JABBER_CONNECTIONS = DRbObject.new(nil, 'druby://localhost:7777') # We have to proxy all our jabber connections via a drb service

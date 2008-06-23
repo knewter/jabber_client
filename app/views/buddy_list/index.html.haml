@@ -1,4 +1,4 @@
-= juggernaut
+= juggernaut(:channels => [current_user.jabber_user.login])
 
 .twocol
   .left
@@ -8,5 +8,6 @@
     %h2 messages
     %ul#messages
 .clear
+= render :partial => 'new_message'
 
 = javascript_include_tag 'buddy_list', 'messages'

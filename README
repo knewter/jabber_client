@@ -21,9 +21,11 @@ I'm aware that the above is quirky and unsuitable for any real usage, but it's a
 1) Launch the juggernaut server with:
      juggernaut -c config/juggernaut.yml 
 
-2) visit /buddy_list (you'll need a user with a jabber user, and you have to be logged in)
+2) Launch the jabber connection proxy
 
-3) open up a script/console session and type:
+3) visit /buddy_list (you'll need a user with a jabber user, and you have to be logged in)
+
+4) open up a script/console session and type:
      g = JabberUpdater.new
      g.handle_presence_updates
      FIXME: Right now you might need to run these lines, ^C to get out, and run them again for it to work.

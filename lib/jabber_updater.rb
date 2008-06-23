@@ -1,8 +1,11 @@
 class JabberUpdater
-  attr_accessor :client
+  attr_accessor :client, :login
 
-  def initialize
-    @client = Jabber::Simple.new(JABBER_CLIENT_TEST_LOGIN, JABBER_CLIENT_TEST_PASS)
+  def initialize(login, pass)
+    @login  = login
+    puts 'about to grab jabber conn'
+    @client = JABBER_CONNECTIONS.get_connection_for(login, pass)
+    puts 'done grabbing jabber conn'
   end
 
   def handle_async_messaging
@@ -26,7 +29,8 @@ class JabberUpdater
           end
         end
       end
-      Juggernaut.send_to_all("new BuddyListUpdate('#{the_presence_updates.to_json}');")
+      Juggernaut.send_to_channel("new BuddyListUpdate('#{the_presence_updates.to_json}');", @login)
+      #Juggernaut.send_to_all("new BuddyListUpdate('#{the_presence_updates.to_json}');")
     end
   end
 
@@ -37,7 +41,8 @@ class JabberUpdater
         { :from => message.from.to_s.gsub(/'/, ''), :body => message.body.gsub(/'/, '') } # FIXME: Need to keep tickmarks at some point.
       end
       puts the_messages.inspect
-      Juggernaut.send_to_all("new MessagesUpdate('#{the_messages.to_json}');")
+      Juggernaut.send_to_channel("new MessagesUpdate('#{the_messages.to_json}');", @login)
+      #Juggernaut.send_to_all("new MessagesUpdate('#{the_messages.to_json}');")
     end
   end
 end
