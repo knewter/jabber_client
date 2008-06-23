@@ -21,11 +21,15 @@ I'm aware that the above is quirky and unsuitable for any real usage, but it's a
 1) Launch the juggernaut server with:
      juggernaut -c config/juggernaut.yml 
 
-2) Launch the jabber connection proxy
+2) Launch the jabber connection proxy:
+     cd RAILS_ROOT/lib
+     ruby jabber_connection_server_daemon.rb
 
-3) visit /buddy_list (you'll need a user with a jabber user, and you have to be logged in)
+3) Launch the rails server
 
-4) open up a script/console session and type:
+4) visit /buddy_list (you'll need a user with a jabber user, and you have to be logged in)
+
+5) open up a script/console session and type:
      g = JabberUpdater.new
      g.handle_presence_updates
      FIXME: Right now you might need to run these lines, ^C to get out, and run them again for it to work.
